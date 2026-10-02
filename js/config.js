@@ -24,5 +24,5 @@ const SHOP_CONFIG = {
   /* Cart settings */
   maxQtyPerItem: 999,          // highest quantity a customer can select per product
   cartStorageKey: "crackersCart",
-  cartVersion: 2               // change this number to empty every visitor's saved cart once
+  cartVersion: 3               // change this number to empty every visitor's saved cart once
 };

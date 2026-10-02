@@ -139,7 +139,8 @@ const ProductCards = (() => {
 
 
 /* ---------- Gift Boxes — poster cards at the top of the Products page ----------
-   Reads the products with category "gift-boxes" from data/products.js.
+   Reads the products that have a poster: in data/products.js (gift boxes and
+   combo packs). Boxes without a poster are still in the price list below.
    The quantity on a card IS the cart quantity (same as the price-list rows).
    Tapping the poster opens the full poster with the list of items inside.
    ------------------------------------------------------------------------ */
@@ -149,7 +150,11 @@ const GiftBoxes = (() => {
   const MAX = Cart.max;
   let grid, dialog, dlgImg, dlgTitle, dlgFoot, current = null;
 
-  const boxes = () => PRODUCTS.filter((p) => p.category === "gift-boxes");
+  const boxes = () => PRODUCTS.filter((p) => p.poster);
+  /* Card title: "Gift Box", or e.g. "Leo Combo" for LEO COMBO PACK */
+  const label = (p) => p.category === "combo-packs"
+    ? p.name.replace(/\s*PACK$/i, "").toLowerCase().replace(/\b\w/g, (c) => c.toUpperCase())
+    : "Gift Box";
 
   function stepperHTML(p) {
     const name = esc(p.name);
@@ -170,7 +175,7 @@ const GiftBoxes = (() => {
         </button>
         <div class="gb-body">
           <div class="gb-row">
-            <h3 class="gb-name">Gift Box</h3>
+            <h3 class="gb-name">${esc(label(p))}</h3>
             <span class="gb-price">${formatINR(p.price)}</span>
           </div>
           <p class="gb-meta">${icon("box")}<span>${p.items ? `${p.items} items` : esc(p.pack)} · Code ${esc(p.serialNumber)}</span></p>
