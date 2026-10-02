@@ -19,6 +19,15 @@ const SHOP_CONFIG = {
   address: "No.5, Sivakasi to Virudhunagar Road, Mathiyasenai, Sivakasi - 626130",
 
   priceListLabel: "2026 Price List",
+
+  /* Order PDF made on the checkout page (shared by the customer on WhatsApp).
+     Address, phone numbers and the WhatsApp number above are printed on it too. */
+  orderPdf: {
+    shopName: "VARAM CRACKERS",               // big name at the top of the PDF
+    title: "CUSTOMER ORDER SUMMARY",
+    orderRefPrefix: "VC",                     // order reference, e.g. VC-261002-1745-K7Q
+    fileNamePrefix: "VARAM-CRACKERS-ORDER"    // → VARAM-CRACKERS-ORDER-VC-261002-1745-K7Q.pdf
+  },
   copyrightYear: 2026,
 
   /* Cart settings */
